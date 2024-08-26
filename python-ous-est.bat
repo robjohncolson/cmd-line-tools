@@ -8,7 +8,8 @@ if /i "%confirm%" neq "Y" (
     set /p USERNAME="Enter correct username: "
 )
 
-:
+
+
 echo Searching common locations...
 REM Search for Git installation in common locations
 set "PYTHON_PATH="
@@ -51,6 +52,5 @@ echo Python not found.
 goto :eof
 
 :found
-echo Python location: %PYTHON_PATH%
-
+echo Copy-paste the following line into your terminal:
 echo $env:PATH += ";%PYTHON_PATH%"
