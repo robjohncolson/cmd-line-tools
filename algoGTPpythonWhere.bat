@@ -33,7 +33,7 @@ call :add_dir "C:\Program Files (x86)\Python"
 call :add_dir "C:\Users\%USERNAME%\AppData\Local\Programs\Python\Python"
 
 :: Add specific version numbers
-for %%v in (39 38 37 36 35) do (
+for %%v in (31 32 33 34 35 36 37 38 39 310 311 312 313 314 315 316 317 318 319) do (
     call :add_dir "C:\Python%%v"
     call :add_dir "C:\Program Files\Python%%v"
     call :add_dir "C:\Program Files (x86)\Python%%v"
@@ -61,8 +61,7 @@ set "dirs=!dirs!C:\Users\%USERNAME%\AppData\Local\Programs\Python\Launcher;"
 
 echo Specific directories have been added.
 
-:: Iterate directly over
- the directories
+:: Iterate directly over the directories
 for %%d in (%dirs%) do (
     if exist "%%d\python.exe" (
         set "PYTHON_PATH=%%d"
