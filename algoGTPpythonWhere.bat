@@ -9,7 +9,7 @@ if /i "%confirm%" neq "Y" (
 )
 
 :: Common locations
-set "common_dirs=C:\Python* C:\Program Files\Python* C:\Users\%USERNAME%\AppData\Local\Programs\Python\Python*"
+set "common_dirs=C:\Python* C:\Program Files\Python* C:\Users\%USERNAME%\AppData\Local\Programs\Python\Python312"
 
 echo Searching common locations...
 for %%d in (%common_dirs%) do (
