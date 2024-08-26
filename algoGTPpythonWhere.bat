@@ -8,16 +8,24 @@ if /i "%confirm%" neq "Y" (
     set /p USERNAME="Enter correct username: "
 )
 
-:: Common locations
-set "common_dirs=C:\Python312 C:\Program Files\Python312 C:\Users\%USERNAME%\AppData\Local\Programs\Python\Python312"
-
+:
 echo Searching common locations...
-for %%d in (%common_dirs%) do (
-    if exist "%%d\python.exe" (
-        echo Python found: %%d\python.exe
+REM Search for Git installation in common locations
+set "PYTHON_PATH="
+for %%I in (
+    "C:\Python312\python.exe"
+    "C:\Users\%USERNAME%\AppData\Local\Programs\Python\Python312\python.exe"
+    "C:\Program Files\Python312\python.exe"
+    "C:\Program Files (x86)\Python312\python.exe"
+    ) do (
+    if exist "%%~I" (
+        set "PYTHON_PATH=%%~dpI"
+        echo Python found: %%~dpI
         goto :found
     )
 )
+
+
 
 echo Python not found in common locations. Searching entire C drive...
 

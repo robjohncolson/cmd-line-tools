@@ -34,7 +34,7 @@ if defined gitpath (
     echo Git found at %gitpath% and added to PATH.
 ) else (
     echo Git not found on this system.
-)
+)   
 
 echo $env:PATH += ";%gitpath%"
 
