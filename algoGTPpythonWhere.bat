@@ -36,11 +36,8 @@ for %%b in (%base_dirs%) do (
 set "dirs=!dirs!C:\Users\%USERNAME%\AppData\Local\Microsoft\WindowsApps;"
 set "dirs=!dirs!C:\Users\%USERNAME%\AppData\Local\Programs\Python\Launcher;"
 
-:: Convert the list of directories into an array for processing
-set dirs_array=%dirs:;= %
-
-echo Searching common directories for Python...
-for %%d in (%dirs_array%) do (
+:: Iterate directly over the directories
+for %%d in (%dirs%) do (
     if exist "%%d\python.exe" (
         set "PYTHON_PATH=%%d"
         echo Potential Python found in %%d
@@ -95,4 +92,3 @@ exit /b 1
 :end
 endlocal
 exit /b 0
-
