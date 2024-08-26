@@ -1,9 +1,13 @@
 @echo off
 setlocal
 
+:: Confirm username
+echo Current username: %USERNAME%
+set /p confirm="Is this correct? (Y/N): "
+if /i "%confirm%" neq "Y" (
+    set /p USERNAME="Enter correct username: "
+)
 
-REM Prompt the user for their username
-set /p "username=Please enter your username: "
 
 REM Search for Git installation in common locations
 set "gitpath="
