@@ -63,14 +63,16 @@ echo Specific directories have been added.
 
 :: Iterate directly over the directories
 for %%d in (%dirs%) do (
-    if exist "%%d\python.exe" (
-        set "PYTHON_PATH=%%d"
-        echo Potential Python found in %%d
+    set "current_dir=%%d"
+    if "!current_dir:~-1!"=="\" set "current_dir=!current_dir:~0,-1!"
+    if exist "!current_dir!\python.exe" (
+        set "PYTHON_PATH=!current_dir!"
+        echo Potential Python found in !current_dir!
         
         :: Verify it's a real Python installation
-        "%%d\python.exe" --version >nul 2>&1
+        "!current_dir!\python.exe" --version >nul 2>&1
         if !errorlevel! equ 0 (
-            echo Confirmed Python installation in %%d
+            echo Confirmed Python installation in !current_dir!
             goto :found
         ) else (
             echo Not a valid Python installation, continuing search...
