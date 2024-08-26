@@ -23,20 +23,36 @@ if %errorlevel% equ 0 (
 echo Python not in PATH
 
 :: Enhanced list of common installation directories
-set "base_dirs=C:\ C:\Program Files\ C:\Program Files (x86)\ C:\Users\%USERNAME%\AppData\Local\Programs\Python\"
-echo base_dirs set
-set "python_versions=Python Python39 Python38 Python37 Python36 Python35 Python3*"
-echo python_versions set
-
 set "dirs="
 echo dirs set
 
+:: Create directory list without nested loops
+call :add_dir "C:\Python"
+call :add_dir "C:\Program Files\Python"
+call :add_dir "C:\Program Files (x86)\Python"
+call :add_dir "C:\Users\%USERNAME%\AppData\Local\Programs\Python\Python"
 
-for %%b in (%base_dirs%) do (
-    for %%v in (%python_versions%) do (
-        set "dirs=!dirs!%%b%%v "
-    )
+:: Add specific version numbers
+for %%v in (39 38 37 36 35) do (
+    call :add_dir "C:\Python%%v"
+    call :add_dir "C:\Program Files\Python%%v"
+    call :add_dir "C:\Program Files (x86)\Python%%v"
+    call :add_dir "C:\Users\%USERNAME%\AppData\Local\Programs\Python\Python%%v"
 )
+
+:: Add wildcard for future Python versions
+call :add_dir "C:\Python3*"
+call :add_dir "C:\Program Files\Python3*"
+call :add_dir "C:\Program Files (x86)\Python3*"
+call :add_dir "C:\Users\%USERNAME%\AppData\Local\Programs\Python\Python3*"
+
+goto :end_add_dir
+
+:add_dir
+set "dirs=!dirs!%~1;"
+goto :eof
+
+:end_add_dir
 echo List of common directories have been set.
 
 :: Add specific directories
