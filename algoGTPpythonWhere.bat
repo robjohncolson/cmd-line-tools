@@ -20,23 +20,33 @@ if %errorlevel% equ 0 (
     echo Python is already in PATH.
     exit /b 0
 )
+echo Python not in PATH
 
 :: Enhanced list of common installation directories
 set "base_dirs=C:\ C:\Program Files\ C:\Program Files (x86)\ C:\Users\%USERNAME%\AppData\Local\Programs\Python\"
+echo base_dirs set
 set "python_versions=Python Python39 Python38 Python37 Python36 Python35 Python3*"
+echo python_versions set
+
 set "dirs="
+echo dirs set
+
 
 for %%b in (%base_dirs%) do (
     for %%v in (%python_versions%) do (
         set "dirs=!dirs!%%b%%v;"
     )
 )
+echo List of common directories have been set.
 
 :: Add specific directories
 set "dirs=!dirs!C:\Users\%USERNAME%\AppData\Local\Microsoft\WindowsApps;"
 set "dirs=!dirs!C:\Users\%USERNAME%\AppData\Local\Programs\Python\Launcher;"
 
-:: Iterate directly over the directories
+echo Specific directories have been added.
+
+:: Iterate directly over
+ the directories
 for %%d in (%dirs%) do (
     if exist "%%d\python.exe" (
         set "PYTHON_PATH=%%d"
@@ -52,6 +62,7 @@ for %%d in (%dirs%) do (
         )
     )
 )
+echo directories searched
 
 echo Python not found in common directories.
 echo Searching entire C drive for Python. This may take a while...
