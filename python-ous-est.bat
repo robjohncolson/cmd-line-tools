@@ -53,4 +53,4 @@ goto :eof
 
 :found
 echo Copy-paste the following line into your terminal:
-echo $env:PATH += ";%PYTHON_PATH%"
+echo $env:PATH += ";%PYTHON_PATH%" | clip

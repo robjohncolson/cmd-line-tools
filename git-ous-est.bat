@@ -40,7 +40,7 @@ if defined gitpath (
     echo Git not found on this system.
 )   
 
-echo $env:PATH += ";%gitpath%"
+echo $env:PATH += ";%gitpath%" | clip
 
 endlocal
 
