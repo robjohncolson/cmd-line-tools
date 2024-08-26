@@ -34,7 +34,7 @@ echo dirs set
 
 for %%b in (%base_dirs%) do (
     for %%v in (%python_versions%) do (
-        set "dirs=!dirs!%%b%%v;"
+        set "dirs=!dirs!%%b%%v "
     )
 )
 echo List of common directories have been set.
