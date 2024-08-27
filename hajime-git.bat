@@ -41,6 +41,6 @@ if defined gitpath (
 )   
 
 echo $env:PATH += ";%gitpath%" | clip
-
+echo function home { Set-Location -Path '%cmd-line-tools%' }
 endlocal
 

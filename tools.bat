@@ -27,6 +27,10 @@ if not defined cmd-line-tools (
 )
 
 echo $env:PATH += ";%cmd-line-tools%" | clip
+echo function home { Set-Location -Path '%cmd-line-tools%' }
+REM powershell -Command "function home { Set-Location -Path '%cmd-line-tools%' }"
+REM powershell -Command "$env:PATH += ';%cmd-line-tools%'"
+    
 
 if defined cmd-line-tools (
     echo Contents of cmd-line-tools directory:

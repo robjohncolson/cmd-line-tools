@@ -26,6 +26,7 @@ if not defined cmd-line-tools (
 )
 
 echo $env:PATH += ";%cmd-line-tools%" | clip
+echo function home { Set-Location -Path '%cmd-line-tools%' }
 
 endlocal
 
